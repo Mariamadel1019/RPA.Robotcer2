@@ -60,18 +60,6 @@ Download The File
 
 
 
-# +
-*** Keywords ***
-Read CSV
-    ${Table}        Read Table From Csv             orders.csv
-    FOR     ${orders_r}    IN    @{Table}
-        Click Button                 OK
-        
-        Fill And Submit The Form For One order    ${orders_r}
-    END
-    
-    
-# -
 
 *** Keywords ***
 Read CSVfile
@@ -148,6 +136,15 @@ Embed the robot screenshot to the receipt PDF file
     Close Pdf      ${pdf}
 
 
+*** Keywords ***
+Go to order another robot
+    Click Button    order-another
+    
+    
+    
+*** Keywords ***  
+Create a ZIP file of the receipts
+    Archive Folder With Zip  ${CURDIR}${/}output${/}receipts   ${CURDIR}${/}output${/}receipt.zip
 
 
 # +
